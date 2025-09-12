@@ -1,0 +1,67 @@
+# ------------------------
+# General
+# ------------------------
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+
+# ------------------------
+# Environment files
+# ------------------------
+.env
+.env.*
+!.env.example   # Keep example env files for reference
+.env.local
+
+# ------------------------
+# Python (Backend)
+# ------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.venv/
+venv/
+ENV/
+
+# ------------------------
+# Node.js (Frontend)
+# ------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+.cache/
+.next/
+out/
+
+# ------------------------
+# IDE & Editor
+# ------------------------
+.vscode/
+.idea/
+*.iml
+
+# ------------------------
+# OS Specific
+# ------------------------
+ehthumbs.db
+desktop.ini
+
+# ------------------------
+# Deployment
+# ------------------------
+.vercel/
+.netlify/

@@ -1,0 +1,14 @@
+[
+  {"Claim":{"ID":"CLM-ELG-0001","MemberID":"784-1987-1234567-1"}},
+  {"Claim":{"ID":"CLM-ELG-0002","MemberID":"784-1900-0000000-0"}},
+  {"Claim":{"ID":"CLM-ELG-0003","MemberID":"784-1980-9999999-9"}},
+  {"Claim":{"ID":"CLM-ELG-0004","MemberID":"784-1990-2222222-2"}},
+  {"Claim":{"ID":"CLM-ELG-0005","MemberID":"784-1985-3333333-3"}},
+  {"Claim":{"ID":"CLM-ELG-0006","MemberID":"784-1992-4444444-4"}},
+  {"Claim":{"ID":"CLM-ELG-0007","MemberID":"784-1995-5555555-5"}},
+  {"Claim":{"ID":"CLM-ELG-0008","MemberID":"784-1975-6666666-6"}},
+  {"Claim":{"ID":"CLM-ELG-0009","MemberID":"784-2000-7777777-7"}},
+  {"Claim":{"ID":"CLM-ELG-0010","MemberID":"784-1988-8888888-8"}},
+  {"Claim":{"ID":"CLM-PAFLOW-0001","MemberID":"784-PA-0001"}},
+  {"Claim":{"ID":"CLM-E2E-0001","MemberID":"784-E2E-0001"}}
+]

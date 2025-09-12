@@ -1,0 +1,8 @@
+[
+  {"Header":{},"Claim":{"ExternalID":"REF_SCRUB_PASS","Patient":{"MemberID":"784-1987-1234567-1"},"ServiceLines":[{"ProcedureCode":"99214","Charge":100.0}],"ProviderID":"HOSP-001","DateOfService":"01/09/2025"}},
+  {"Header":{},"Claim":{"ExternalID":"REF_SCRUB_HARD","ServiceLines":[]}},
+  {"Header":{},"Claim":{"ExternalID":"REF_SCRUB_HARD","Patient":{"MemberID":"784-1987-1234567-1"},"ServiceLines":[{"ProcedureCode":"99214","Charge":100.0}],"ProviderCredentialsValid":false}},
+  {"Header":{},"Claim":{"ExternalID":"REF_SCRUB_HARD","DuplicateOf":"CLM-0001"}},
+  {"Header":{},"Claim":{"ExternalID":"REF_SCRUB_HARD","Format":"BAD_PAYLOAD"}},
+  {"Header":{},"Claim":{"ExternalID":"REF_SCRUB_HARD","ServiceLines":[{"ProcedureCode":"BADCODE"}]}}
+]

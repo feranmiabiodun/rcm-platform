@@ -1,0 +1,29 @@
+INFO:humaein_main:Included humaein_sim router under /simulator/humaein prefix.
+INFO:humaein_main:Included ai_mocks router under /ai.
+
+========================================================================
+Trying import: backend.main  (expected file: backend/main.py)
+IMPORT OK
+  functions: ['_build_unique_composite_auto', '_find_reference_example_by_rule_id', '_get_status_value', '_load_claim_store_file', '_normalize_token_for_match', '_safe_get', '_safe_post', 'call_ai_llm', 'call_ai_ocr', 'claim_store_create', 'claim_store_get', 'claim_store_resume', 'claim_store_update', 'decide_next_action', 'endpoint_claim_store_create', 'endpoint_claim_store_get', 'endpoint_claim_store_resume', 'endpoint_claim_store_update', 'find_seeded_for_stage_by_value', 'get_orch_config']
+  classes  : []
+
+========================================================================
+Trying import: backend.ai_mocks  (expected file: backend/ai_mocks.py)
+IMPORT OK
+  functions: ['mock_llm', 'mock_ocr']
+  classes  : []
+
+========================================================================
+Trying import: backend.humaein_sim  (expected file: backend/humaein_sim.py)
+IMPORT OK
+  functions: ['_build_unique_composite_exact', '_do_seed_all_rules', '_extract_patient_info', '_extract_values_by_fieldnames', '_find_first_key_occurrence', '_gen_id', '_get_path_value', '_index_rule_if_unique_fields', '_log_event', '_normalize_value_exact', '_now_iso', '_process_incoming_by_stage_exact', '_rebuild_index_for_stage', 'compute_composite', 'create_rule', 'debug_events', 'delete_rule', 'get_api_key', 'get_rule', 'get_unique_index']
+  classes  : ['RuleCreate']
+
+========================================================================
+Trying import: backend.db_store  (expected file: backend/db_store.py)
+IMPORT OK
+  functions: ['_get_conn', '_now_ts', 'claim_store_create', 'claim_store_get', 'claim_store_resume', 'claim_store_update']
+  classes  : []
+
+
+Diagnostic finished.

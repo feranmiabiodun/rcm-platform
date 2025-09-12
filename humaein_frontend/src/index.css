@@ -1,0 +1,315 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AI-Native RCM Design System - Humaein Brand */
+
+@layer base {
+  :root {
+    /* VIBE-CODED Brand Colors (HSL) - Electric Lime & Midnight Purple */
+    --brand-bg: 250 25% 92%;
+    --left-column-bg: 270 35% 96%;
+    --panel-bg: 0 0% 100%;
+    --card-bg: 250 40% 98%;
+    --brand-charcoal: 240 50% 15%;
+    --brand-accent: 270 85% 55%;
+    --brand-accent-2: 240 90% 25%;
+    --brand-gold: 55 95% 60%;
+    --muted-text: 240 25% 45%;
+    
+    /* Electric Vibrant Palette - Lime & Purple Fusion */
+    --accent-coral: 15 90% 65%;
+    --accent-mint: 85 100% 50%;
+    --accent-sunset: 45 100% 65%;
+    --accent-electric: 85 100% 55%;
+    --accent-cyan: 270 100% 65%;
+    
+    /* Semantic tokens */
+    --background: var(--brand-bg);
+    --foreground: var(--brand-charcoal);
+    --card: var(--panel-bg);
+    --card-foreground: var(--brand-charcoal);
+    --popover: var(--panel-bg);
+    --popover-foreground: var(--brand-charcoal);
+    
+    --primary: var(--brand-accent);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--card-bg);
+    --secondary-foreground: var(--brand-charcoal);
+    
+    --muted: var(--left-column-bg);
+    --muted-foreground: var(--muted-text);
+    
+    --accent: var(--brand-accent-2);
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 187 20% 89%;
+    --input: 187 20% 89%;
+    --ring: var(--brand-accent);
+    
+    --radius: 0.5rem;
+    
+    /* Vibrant Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--brand-accent)), hsl(var(--accent-electric)));
+    --gradient-card: linear-gradient(180deg, hsl(var(--card-bg)), hsl(var(--left-column-bg)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent-coral)), hsl(var(--brand-gold)));
+    --gradient-electric: linear-gradient(135deg, hsl(var(--accent-cyan)), hsl(var(--brand-accent-2)));
+    --gradient-gold: linear-gradient(135deg, hsl(var(--brand-gold)), hsl(var(--accent-sunset)));
+    
+    /* Vibrant Shadows with Glow */
+    --shadow-elegant: 0 4px 20px -4px hsl(var(--brand-accent) / 0.4);
+    --shadow-panel: 0 8px 32px -8px hsl(var(--brand-accent) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--brand-accent) / 0.2);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Top bar background token (light mode) */
+    --topbar-bg: 250 75% 15%;
+
+    /* Tunable topbar solid color (HSL) — change this value to dial the exact blue you want */
+    --topbar-blue: hsl(283, 65%, 31%);
+  }
+
+  .dark {
+    --brand-bg: 225 25% 8%;
+    --left-column-bg: 225 30% 12%;
+    --panel-bg: 225 20% 15%;
+    --card-bg: 225 25% 18%;
+    --brand-charcoal: 0 0% 98%;
+    --muted-text: 220 15% 70%;
+    
+    --background: var(--brand-bg);
+    --foreground: var(--brand-charcoal);
+    --card: var(--panel-bg);
+    --card-foreground: var(--brand-charcoal);
+    --popover: var(--panel-bg);
+    --popover-foreground: var(--brand-charcoal);
+    
+    --primary: var(--brand-accent-2);
+    --primary-foreground: var(--brand-charcoal);
+    --secondary: var(--card-bg);
+    --secondary-foreground: var(--brand-charcoal);
+    
+    --muted: var(--left-column-bg);
+    --muted-foreground: var(--muted-text);
+    
+    --accent: var(--brand-accent);
+    --accent-foreground: 0 0% 100%;
+    
+    --border: 214 40% 25%;
+    --input: 214 40% 25%;
+    
+    --shadow-elegant: 0 4px 20px -4px hsl(var(--brand-accent) / 0.2);
+    --shadow-panel: 0 8px 32px -8px hsl(0 0% 0% / 0.3);
+
+    /* Top bar background token (dark mode) */
+    --topbar-bg: 272.3 17% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Helper class for TopBar to ensure consistent usage without relying on Tailwind arbitrary classes.
+     Use <header className="topbar ..."> or keep using bg-[hsl(var(--topbar-bg))] if you prefer. */
+  .topbar {
+    background: hsl(var(--topbar-bg));
+  }
+
+  /* Optional subtle glow utility you can opt into for the top bar */
+  .topbar--glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+ 
+
+  /* expose hover background alias for convenience */
+  :root {
+    --hover-bg: var(--gradient-primary);
+  }
+
+  /* Primary rule set for commonly interactive elements */
+  button:hover,
+  a:hover,
+  .btn:hover,
+  .card-header:hover,
+  .collapsible-trigger:hover,
+  .topbar .SelectTrigger:hover,
+  .topbar .SelectValue:hover,
+  .topbar .SelectContent [role="option"]:hover {
+    background: var(--hover-bg) !important;
+    color: white !important;
+  }
+
+  /* Radix / Select / dropdown item common attributes (covers many libs) */
+  [data-radix-select-item]:hover,
+  [data-highlighted] {
+    background: var(--hover-bg) !important;
+    color: white !important;
+  }
+
+  /* Tailwind / custom select item classes if used */
+  .select-item:hover,
+  .select-content [role="option"]:hover,
+  .select-content .item:hover {
+    background: var(--hover-bg) !important;
+    color: white !important;
+  }
+
+  /* Ensure dropdown list items are black by default (non-hover),
+     so they match your request: list text = black, hover = gradient */
+  .select-content,
+  .SelectContent,
+  .topbar .SelectContent,
+  .select-dropdown {
+    color: black !important;
+    background: transparent !important;
+  }
+
+  /* For keyboard highlight states some libs use data-highlighted */
+  .select-content [data-highlighted="true"],
+  [data-highlighted="true"] {
+    background: var(--hover-bg) !important;
+    color: white !important;
+  }
+
+  /* Utility: explicit class you can add to any element to get the same hover behavior.
+     Use it only where you want the gradient hover and don't trust selector coverage. */
+  .hover-primary-gradient:hover {
+    background: var(--hover-bg) !important;
+    color: white !important;
+  }
+}
+
+/* -------------------------
+   3D GLOWY NAV BUTTON STYLES
+   (append-only; scoped so it won't change layout or colors elsewhere)
+   ------------------------- */
+@layer components {
+  /* only affects .nav-list-tight flow (keeps your vertical spacing) */
+  :where(.nav-list-tight) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* minimal 3D + glow effect for nav buttons; DOES NOT alter text layout or badge size */
+  :where(.nav-list-tight, #left-sidebar) .nav-item {
+    position: relative;
+    z-index: 0;
+    will-change: transform, box-shadow;
+
+    /* SURFACE: small translucent lift to better separate from page background
+       - keeps your tokens and sizes unchanged
+       - only increases contrast/legibility */
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.01));
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.10);
+    transition: box-shadow 200ms var(--transition-smooth), transform 200ms var(--transition-smooth), filter 200ms var(--transition-smooth);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* tiny wrapper outline (very thin) */
+  :where(.nav-list-tight, #left-sidebar) .nav-item::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: -4px;
+    border-radius: calc(var(--btn-radius, 0.75rem) + 4px);
+    z-index: -1;
+    border: 0.0px solid hsl(283 65% 31%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 28%);
+    background-repeat: no-repeat;
+  }
+
+  /* glow (kept beneath wrapper) */
+  :where(.nav-list-tight, #left-sidebar) .nav-item::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: -6px;
+    height: 8px;
+    border-radius: 50%;
+    z-index: -2;
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+    transition: opacity 220ms var(--transition-smooth), transform 220ms var(--transition-smooth);
+    filter: blur(10px);
+    background: hsl(var(--brand-accent) / 0.16);
+  }
+
+  /* hover/focus: stronger shadow + glow; uses transform (no reflow) */
+  :where(.nav-list-tight, #left-sidebar) .nav-item:hover,
+  :where(.nav-list-tight, #left-sidebar) .nav-item:focus {
+    box-shadow: 0 18px 44px rgba(0,0,0,0.14), 0 0 30px hsl(var(--brand-accent) / 0.08);
+    transform: translateY(-3px);
+  }
+
+  :where(.nav-list-tight, #left-sidebar) .nav-item:hover::after,
+  :where(.nav-list-tight, #left-sidebar) .nav-item:focus::after {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* active (pressed) — depth reduces */
+  :where(.nav-list-tight, #left-sidebar) .nav-item:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08), inset 0 1px 6px rgba(0,0,0,0.04);
+  }
+
+  /* keep badges untouched — no layout changes */
+  :where(.nav-list-tight, #left-sidebar) .nav-item .cat-badge,
+  :where(.nav-list-tight, #left-sidebar) .nav-item .text-xs {
+    /* intentionally unchanged */
+  }
+
+  /* Slightly bolder label (your prior request) and ensure default color is black */
+  :where(.nav-list-tight, #left-sidebar) .nav-item .cat-title {
+    font-weight: 600;
+    color: hsl(var(--brand-charcoal));
+  }
+
+  /* Ensure the selected state DOES NOT change label/badge color to white:
+     selected items keep black text (only hover makes it white) */
+  :where(.nav-list-tight, #left-sidebar) .nav-item[aria-selected="true"] .cat-title,
+  :where(.nav-list-tight, #left-sidebar) .nav-item[aria-selected="true"] .cat-badge,
+  :where(.nav-list-tight, #left-sidebar) .nav-item.active .cat-title,
+  :where(.nav-list-tight, #left-sidebar) .nav-item.active .cat-badge {
+    color: hsl(var(--brand-charcoal)) !important;
+  }
+
+  /* Hover only: label and badge become white (focus no longer flips color) */
+  :where(.nav-list-tight, #left-sidebar) .nav-item:hover .cat-title {
+    color: #ffffff !important;
+  }
+  :where(.nav-list-tight, #left-sidebar) .nav-item:hover .cat-badge {
+    color: #ffffff !important;
+  }
+
+  /* accessibility: visible focus (does NOT change label color) */
+  :where(.nav-list-tight, #left-sidebar) .nav-item:focus-visible {
+    outline: 3px solid rgba(133, 90, 200, 0.12);
+    outline-offset: 4px;
+  }
+
+  /* respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    :where(.nav-list-tight, #left-sidebar) .nav-item,
+    :where(.nav-list-tight, #left-sidebar) .nav-item::after {
+      transition: none !important;
+      transform: none !important;
+    }
+  }
+}

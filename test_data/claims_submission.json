@@ -1,0 +1,6 @@
+[
+  {"Header":{"SenderID":"HOSP-001","ReceiverID":"PAYER-01","TransactionDate":"08/09/2025 14:35"},"ClaimSubmission":{"ExternalID":"REF_SUB_ACCEPTED","ClaimID":"CLM-EX-1","Total":150.00}},
+  {"Header":{"SenderID":"HOSP-001","ReceiverID":"GATEWAY-01","TransactionDate":"08/09/2025 14:35"},"ClaimSubmission":{"ExternalID":"REF_SUB_REJECTED_GATEWAY","SimulateBadScrub":true}},
+  {"Header":{"SenderID":"HOSP-001","ReceiverID":"PAYER-02","TransactionDate":"08/09/2025 14:35"},"ClaimSubmission":{"ExternalID":"REF_SUB_ROUTED","ClaimID":"CLM-ROUTED-1","RoutedTo":"PAYER-02"}},
+  {"Header":{"SenderID":"HOSP-E2E-001","ReceiverID":"PAYER-01","TransactionDate":"08/09/2025 14:49"},"ClaimSubmission":{"ExternalID":"CLM-E2E-0001","ClaimID":"CLM-E2E-0001","Total":120.00}}
+]

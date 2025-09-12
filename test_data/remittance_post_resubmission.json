@@ -1,0 +1,6 @@
+[
+  {"RemittancePost":{"NewClaimRefID":"REF_RA_FINAL_PAID","RemitID":"RA-FINAL-PAID-1","Status":"RA_FINAL_PAID","PaidAmount":100.0}},
+  {"RemittancePost":{"NewClaimRefID":"REF_RA_FINAL_DENIED","RemitID":"RA-FINAL-DENY-1","Status":"RA_FINAL_DENIED","PaidAmount":0.0,"DenialCodes":[{"Code":"DN_FINAL","Description":"Final denial"}]}},
+  {"RemittancePost":{"NewClaimRefID":"REF_RA_RECON_SCHED","RemitID":"RA-RECON-1","Status":"RA_RECON_SCHEDULED","Comments":"Reconciliation scheduled"}},
+  {"RemittancePost":{"NewClaimRefID":"REF_RA_COMMENTED","RemitID":"RA-CMT-1","Status":"RA_COMMENTED","PaidAmount":50.0,"Comments":"Payment with comment"}}
+]

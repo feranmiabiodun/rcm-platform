@@ -1,0 +1,4 @@
+[
+  {"Denial":{"ClaimRefID":"REF_DEN_ANALYZED","RemitID":"REF_REM_1","Action":"ANALYZE"}},
+  {"Denial":{"ClaimRefID":"REF_DEN_APPEAL_SUB","RemitID":"REF_REM_2","Action":"APPEAL_SUBMIT"}}
+]

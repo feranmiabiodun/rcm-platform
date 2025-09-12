@@ -1,0 +1,6 @@
+[
+  {"Reconciliation":{"ReconID":"RECON-OK-1","RequestedResolution":{"Amount":100.0},"ClaimHistory":[{"Amount":100.0}],"Status":"RECON_RECONCILED"}},
+  {"Reconciliation":{"ReconID":"RECON-PART-1","RequestedResolution":{"Amount":80.0},"ClaimHistory":[{"Amount":100.0}],"Status":"RECON_PARTIAL_SETTLE"}},
+  {"Reconciliation":{"ReconID":"RECON-ESC-1","RequestedResolution":{"Amount":200.0},"ClaimHistory":[{"Amount":100.0}],"Status":"RECON_ESCALATED"}},
+  {"Reconciliation":{"ReconID":"RECON-ARC-1","RequestedResolution":{"Amount":0.0},"ClaimHistory":[],"Status":"RECON_ARCHIVED"}}
+]

@@ -1,0 +1,8 @@
+[
+  {"Header":{"SenderID":"HOSP-001"},"ClinicalDocument":{"ProcedureCode":"99214","ClinicianID":"DR-001","Narrative":"Comprehensive consultation with documented findings","Attachments":["report.pdf"]}},
+  {"Header":{"SenderID":"HOSP-001"},"ClinicalDocument":{"ProcedureCode":"30520","ClinicianID":"DR-002","Attachments":[]}},
+  {"Header":{"SenderID":"HOSP-001"},"ClinicalDocument":{"ProcedureCode":"99214"}},
+  {"Header":{"SenderID":"HOSP-001"},"ClinicalDocument":{"ProcedureCode":"99214","ClinicianID":"DR-003","Attachments":["scan_illegible.jpg"]}},
+  {"Header":{"SenderID":"HOSP-001"},"ClinicalDocument":{"ProcedureCode":"63047","ClinicianID":"DR-004","Narrative":"short"}},
+  {"Header":{"SenderID":"HOSP-001"},"ClinicalDocument":{"ProcedureCode":"30520","ClinicianID":"C-ASK","Attachments":[]}}
+]

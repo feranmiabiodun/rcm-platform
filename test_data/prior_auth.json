@@ -1,0 +1,27 @@
+[
+  {
+    "Header": {"SenderID": "HOSP-001", "ReceiverID": "PAYER-01", "TransactionDate": "08/09/2025 14:31"},
+    "PriorAuthorizationRequest": {"RequestID": "PAR-0001", "MemberID": "784-1987-1234567-1", "ProcedureCodes": ["30520"], "RequestedUnits": 1},
+    "Patient": {"PatientID": "PT-PA-0001", "Name": "Aisha Khalid", "DOB": "1988-06-15", "Gender": "F"}
+  },
+  {
+    "Header": {"SenderID": "HOSP-001", "ReceiverID": "PAYER-01", "TransactionDate": "08/09/2025 14:31"},
+    "PriorAuthorizationRequest": {"RequestID": "PAR-0002", "MemberID": "784-1987-1239999-1", "ProcedureCodes": ["30520"], "RequestedUnits": 2},
+    "Patient": {"PatientID": "PT-PA-0002", "Name": "Khaled Mansoor", "DOB": "1990-10-11", "Gender": "M"}
+  },
+  {
+    "Header": {"SenderID": "HOSP-001", "ReceiverID": "PAYER-01", "TransactionDate": "08/09/2025 14:31"},
+    "PriorAuthorizationRequest": {"RequestID": "PAR-0003", "MemberID": "784-1991-2223333-2", "ProcedureCodes": ["99999"], "ClinicalNotes": "See attached"},
+    "Patient": {"PatientID": "PT-PA-0003", "Name": "Rana Farouk", "DOB": "1982-05-05", "Gender": "F"}
+  },
+  {
+    "Header": {"SenderID": "HOSP-001", "ReceiverID": "PAYER-01", "TransactionDate": "08/09/2025 14:31"},
+    "PriorAuthorizationRequest": {"RequestID": "PAR-0004", "MemberID": "784-1982-4445555-4", "ProcedureCodes": ["30520"], "ClinicalNotes": "Not indicated"},
+    "Patient": {"PatientID": "PT-PA-0004", "Name": "Hassan Ali", "DOB": "1978-04-14", "Gender": "M"}
+  },
+  {
+    "Header": {"SenderID": "HOSP-PA-001", "ReceiverID": "PAYER-01", "TransactionDate": "08/09/2025 14:41"},
+    "PriorAuthorizationRequest": {"RequestID": "PAR-PAFLOW-0001", "MemberID": "784-PA-0001", "ProcedureCodes": ["30520"], "RequestedUnits": 1},
+    "Patient": {"PatientID": "PT-PA-0001", "Name": "PA Test", "DOB": "1990-01-01", "Gender": "F"}
+  }
+]
