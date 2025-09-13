@@ -105,7 +105,7 @@ export const ComboSearchInput: React.FC<ComboSearchInputProps> = ({
                   key={payer.id}
                   value={payer.name}
                   onSelect={() => handleSelect(payer.name)}
-                  className="cursor-pointer hover:bg-brand-left-column"
+                  className="cursor-pointer hover:bg-gradient-primary data-[highlighted=true]:bg-gradient-primary data-[selected=true]:bg-gradient-primary"
                 >
                   <Check
                     className={cn(
@@ -123,7 +123,7 @@ export const ComboSearchInput: React.FC<ComboSearchInputProps> = ({
                 <CommandItem
                   value={`custom-${searchTerm}`}
                   onSelect={handleCustomPayer}
-                  className="cursor-pointer hover:bg-brand-left-column border-t border-border"
+                  className="cursor-pointer hover:bg-gradient-primary data-[highlighted=true]:bg-gradient-primary data-[selected=true]:bg-gradient-primary border-t border-border"
                 >
                   <div className="w-full">
                     <div className="font-medium text-brand-accent">

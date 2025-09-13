@@ -214,7 +214,7 @@ const TopBar: FC = () => {
 
   return (
     <header
-      className="topbar w-full flex items-center justify-between px-6 py-3 shadow-sm sticky top-0 z-50 text-white"
+      className="topbar w-full inset-x-0 flex items-center justify-between px-6 py-3 shadow-sm sticky top-0 z-50 text-white"
     >
       <div
         aria-hidden="true"
@@ -230,7 +230,11 @@ const TopBar: FC = () => {
         }}
       />
 
-      <h1 className="text-lg font-semibold">RCM</h1>
+      {/* Updated heading */}
+      <h1 className="text-lg font-semibold text-center leading-tight">
+        <span className="block text-sm">AI-NATIVE</span>
+        <span className="block">RCM</span>
+      </h1>
 
       <div className="flex items-center gap-3">
         {/* Keep Select trigger and content for visuals & portal behavior.
