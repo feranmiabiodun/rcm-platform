@@ -214,21 +214,12 @@ const TopBar: FC = () => {
 
   return (
     <header
-      className="topbar w-full inset-x-0 flex items-center justify-between px-6 py-3 shadow-sm sticky top-0 z-50 text-white"
+      className="topbar w-full flex items-center justify-between px-6 py-3 shadow-sm sticky top-0 z-50 text-white"
+      style={{
+        backgroundColor: "var(--topbar-blue, hsl(215 65% 42%))",
+        boxShadow: "0 8px 28px rgba(0,0,0,0.22)",
+      }}
     >
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: "0",
-          zIndex: -1,
-          pointerEvents: "none",
-          backgroundColor: "var(--topbar-blue, hsl(215 65% 42%))",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100% 100%",
-          boxShadow: "0 8px 28px rgba(0,0,0,0.22)",
-        }}
-      />
 
       {/* Updated heading */}
       <h1 className="text-lg font-semibold text-center leading-tight">
