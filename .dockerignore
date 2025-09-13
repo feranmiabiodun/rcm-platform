@@ -1,0 +1,29 @@
+# python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# venvs
+.venv/
+venv/
+ENV/
+
+# env files
+.env
+.env.*
+
+# git
+.git
+.gitignore
+
+# docker build artifacts
+Dockerfile*
+docker-compose*.yml
+
+# IDEs and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

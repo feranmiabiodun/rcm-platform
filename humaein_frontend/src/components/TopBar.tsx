@@ -230,7 +230,7 @@ const TopBar: FC = () => {
         }}
       />
 
-      <h1 className="text-lg font-semibold">AI-Native RCM</h1>
+      <h1 className="text-lg font-semibold">RCM</h1>
 
       <div className="flex items-center gap-3">
         {/* Keep Select trigger and content for visuals & portal behavior.

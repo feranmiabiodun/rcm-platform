@@ -1,14 +1,12 @@
+# public/robots.txt
+User-agent: *
+Allow: /
+
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: *
-Allow: /
+# optional: point to sitemap if you have one
+Sitemap: https://rcm-platform.vercel.app/sitemap.xml

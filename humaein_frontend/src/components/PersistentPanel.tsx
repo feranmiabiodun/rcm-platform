@@ -17,9 +17,7 @@ export const PersistentPanel: React.FC<PersistentPanelProps> = ({ className }) =
   const { 
     selectedCategoryId, 
     isDarkMode, 
-    setIsDarkMode,
-    isDevMode,
-    setIsDevMode
+    setIsDarkMode
   } = useRCM();
   
   const isDesktop = useMediaQuery('(min-width: 1024px)');
@@ -123,33 +121,13 @@ export const PersistentPanel: React.FC<PersistentPanelProps> = ({ className }) =
       <div className="px-6 py-3 border-t border-border bg-brand-left-column/50">
         <div className="flex items-center justify-between text-xs text-brand-muted-text">
           <div className="flex items-center gap-4">
-            <span>Last sync: Just now</span>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="h-6 px-2 text-xs"
-              onClick={() => setIsDevMode(!isDevMode)}
-            >
-              DevMode {isDevMode ? 'ON' : 'OFF'} 
-              <span className="ml-1 text-brand-muted-text/60">(Ctrl+D)</span>
-            </Button>
+            {/* Removed Last sync and DevMode controls */}
           </div>
           
           <Button variant="ghost" size="sm" className="h-6 px-2 text-xs text-brand-accent">
             Quick Start Guide →
           </Button>
         </div>
-
-        {/* Dev Mode Logs */}
-        {isDevMode && (
-          <div className="mt-3 p-3 bg-brand-charcoal rounded text-white text-xs font-mono max-h-32 overflow-y-auto">
-            <div className="text-brand-muted-text mb-1">Raw Response (Debug):</div>
-            <div className="text-green-400">{"{"}</div>
-            <div className="pl-2 text-gray-300">"status": "ready",</div>
-            <div className="pl-2 text-gray-300">"timestamp": "{new Date().toISOString()}"</div>
-            <div className="text-green-400">{"}"}</div>
-          </div>
-        )}
       </div>
     </div>
   );
