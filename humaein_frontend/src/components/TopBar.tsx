@@ -9,6 +9,7 @@ import {
 import { useRCM } from "@/contexts/RCMContext";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CATEGORIES } from "@/data/categories";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 /**
  * Built-in quick-start summaries keyed by category label.
@@ -108,12 +109,10 @@ const QUICK_SUMMARIES: Record<string, React.ReactNode> = {
 
 /**
  * Safely extract a category-provided summary or description without using `any`.
- * Accepts the category item (unknown) and returns either a string, ReactNode, or undefined.
  */
 function getCategoryProvidedContent(categoryItem: unknown): string | React.ReactNode | undefined {
   if (categoryItem && typeof categoryItem === "object") {
     const obj = categoryItem as Record<string, unknown>;
-    // summary might be a React node or a string
     if (obj.summary !== undefined) {
       const s = obj.summary;
       if (typeof s === "string" || React.isValidElement(s)) return s as string | React.ReactNode;
@@ -127,24 +126,16 @@ function getCategoryProvidedContent(categoryItem: unknown): string | React.React
 }
 
 const TopBar: FC = () => {
-  // Keep Quick Start isolated: do NOT destructure setSelectedCategoryId here
   const { isDarkMode, setIsDarkMode } = useRCM();
+  const isMobile = useIsMobile(); // 👈 detect mobile
 
-  // Control dropdown open state
   const [open, setOpen] = useState<boolean>(false);
-
-  // Which quick-start stage is active (id)
   const [quickSelected, setQuickSelected] = useState<string | null>(null);
-
-  // Hovered/focused id (restores var(--hover-bg) visual)
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
-  // refs: map of item id -> DOM element
   const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
-  // ref to the SelectContent root (portal content). We forward ref to the Radix content.
   const contentRef = useRef<HTMLElement | null>(null);
 
-  // small util: scroll the item into view inside the dropdown
   const scrollItemIntoView = (id: string) => {
     const el = itemRefs.current[id];
     if (!el) return;
@@ -155,29 +146,23 @@ const TopBar: FC = () => {
     }
   };
 
-  // manual selection handler — keeps dropdown open and does not let Radix manage selection
   const handleManualSelect = (id: string) => {
     setQuickSelected(id);
     window.dispatchEvent(new CustomEvent("quickstart-select", { detail: id }));
     setOpen(true);
-    // ensure item is visible and content focused
     scrollItemIntoView(id);
     contentRef.current?.focus();
   };
 
-  // close everything (header X)
   const closeAll = () => {
     setQuickSelected(null);
     setOpen(false);
   };
 
-  // Let Radix inform us about open changes (so trigger toggles work)
   const handleOpenChange = (val: boolean) => {
     setOpen(val);
   };
 
-  // Keyboard nav handler for the dropdown content:
-  // ArrowDown/ArrowUp/Home/End move hoveredId and scroll item into view.
   const handleDropdownKeyDown = (e: React.KeyboardEvent) => {
     const keys = ["ArrowDown", "ArrowUp", "Home", "End"];
     if (!keys.includes(e.key)) return;
@@ -199,14 +184,11 @@ const TopBar: FC = () => {
 
     const nextId = ids[nextIndex];
     setHoveredId(nextId);
-    // scroll the newly focused/hovered item into view
     scrollItemIntoView(nextId);
   };
 
-  // focus the content root when opening so keyboard arrows and chevrons work
   useEffect(() => {
     if (open) {
-      // tiny delay to let portal mount
       const t = setTimeout(() => contentRef.current?.focus(), 0);
       return () => clearTimeout(t);
     }
@@ -214,139 +196,144 @@ const TopBar: FC = () => {
 
   return (
     <header
-      className="topbar w-full flex items-center justify-between px-6 py-3 shadow-sm sticky top-0 z-50 text-white"
-      style={{
-        backgroundColor: "var(--topbar-blue, hsl(215 65% 42%))",
-        boxShadow: "0 8px 28px rgba(0,0,0,0.22)",
-      }}
+      className="topbar w-full inset-x-0 flex items-center justify-between px-6 py-3 shadow-sm sticky top-0 z-50 text-white"
     >
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: isMobile ? 0 : "var(--scrollbar-width, 0px)", // 👈 existing behaviour preserved
+          bottom: 0,
+          zIndex: -1,
+          pointerEvents: "none",
+          backgroundColor: "var(--topbar-blue, hsl(215 65% 42%))",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+          boxShadow: "0 8px 28px rgba(0,0,0,0.22)",
+        }}
+      />
 
-      {/* Updated heading */}
-      <h1 className="text-lg font-semibold text-center leading-tight">
-        <span className="block text-sm">AI-NATIVE</span>
-        <span className="block">RCM</span>
+      {/* Updated heading: non-breaking hyphen + nowrap to avoid weird line-break */}
+      <h1 className="text-lg font-semibold leading-tight">
+        <span className="block text-sm sm:inline whitespace-nowrap">AI&#8209;NATIVE</span>
+        <span className="block sm:inline">RCM</span>
       </h1>
 
-      <div className="flex items-center gap-3">
-        {/* Keep Select trigger and content for visuals & portal behavior.
-            Items are plain interactive elements so Radix does not auto-close. */}
-        <Select open={open} onOpenChange={handleOpenChange}>
-          <SelectTrigger
-            className="w-32 h-8 text-xs bg-white/10 text-white backdrop-blur-sm"
-            onClick={(e) => {
-              e.stopPropagation();
-              setOpen((prev) => !prev);
-            }}
-          >
-            <span className="select-trigger-label">Quick Start</span>
-          </SelectTrigger>
+      {/* right-side controls (labelled so CSS can target it safely) */}
+      <div className="topbar-right flex items-center gap-3">
+        {/* center select wrapped so CSS can flex it in mobile without guessing other classes */}
+        <div className="select-middle">
+          <Select open={open} onOpenChange={handleOpenChange}>
+            <SelectTrigger
+              className="w-32 h-8 text-xs bg-white/10 text-white backdrop-blur-sm"
+              onClick={(e) => {
+                e.stopPropagation();
+                setOpen((prev) => !prev);
+              }}
+            >
+              <span className="select-trigger-label">Quick Start</span>
+            </SelectTrigger>
 
-          {/* Forward ref here so we can access the dropdown DOM (portal)
-              and make it focusable (tabIndex=0) so keyboard arrow events fire. */}
-          <SelectContent
-            className="bg-white"
-            data-topbar-select
-            ref={(el: HTMLElement | null) => {
-              contentRef.current = el;
-            }}
-            tabIndex={0}
-            onKeyDown={handleDropdownKeyDown}
-          >
-            {/* Sticky header so X stays visible while scrolling */}
-            <div className="sticky top-0 z-40 bg-white flex items-center justify-end px-2 py-1 border-b shadow-sm">
-              <button
-                aria-label="Close Quick Start"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  closeAll();
-                }}
-                className="inline-flex h-7 w-7 items-center justify-center rounded hover:bg-gray-100"
-              >
-                <XIcon className="h-4 w-4" />
-              </button>
-            </div>
+            <SelectContent
+              className="bg-white"
+              data-topbar-select
+              ref={(el: HTMLElement | null) => {
+                contentRef.current = el;
+              }}
+              tabIndex={0}
+              onKeyDown={handleDropdownKeyDown}
+            >
+              <div className="sticky top-0 z-40 bg-white flex items-center justify-end px-2 py-1 border-b shadow-sm">
+                <button
+                  aria-label="Close Quick Start"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    closeAll();
+                  }}
+                  className="inline-flex h-7 w-7 items-center justify-center rounded hover:bg-gray-100"
+                >
+                  <XIcon className="h-4 w-4" />
+                </button>
+              </div>
 
-            {CATEGORIES.map((category) => {
-              const id = category.id;
-              const isActive = quickSelected === id;
+              {CATEGORIES.map((category) => {
+                const id = category.id;
+                const isActive = quickSelected === id;
 
-              // prefer explicit summary stored in CATEGORIES, otherwise use built-in map
-              const fromCategories = getCategoryProvidedContent(category);
-              const builtIn = QUICK_SUMMARIES[category.label] ?? null;
-              const guideContent = fromCategories
-                ? typeof fromCategories === "string"
-                  ? <div className="text-xs leading-relaxed">{fromCategories}</div>
-                  : fromCategories
-                : builtIn;
+                const fromCategories = getCategoryProvidedContent(category);
+                const builtIn = QUICK_SUMMARIES[category.label] ?? null;
+                const guideContent = fromCategories
+                  ? typeof fromCategories === "string"
+                    ? <div className="text-xs leading-relaxed">{fromCategories}</div>
+                    : fromCategories
+                  : builtIn;
 
-              // compute inline style for hover/focus to match var(--hover-bg)
-              const isHovered = hoveredId === id;
-              const hoverStyle: React.CSSProperties | undefined = isHovered
-                ? { background: "var(--hover-bg)", color: "white" }
-                : undefined;
+                const isHovered = hoveredId === id;
+                const hoverStyle: React.CSSProperties | undefined = isHovered
+                  ? { background: "var(--hover-bg)", color: "white" }
+                  : undefined;
 
-              return (
-                <div key={id} className="w-full">
-                  {/* Non-Radix interactive item */}
-                  <div
-                    role="button"
-                    tabIndex={0}
-                    ref={(el: HTMLDivElement | null) => {
-                      itemRefs.current[id] = el;
-                    }}
-                    onPointerDown={(e: React.PointerEvent) => {
-                      // prevent Radix default select which would close the dropdown
-                      e.preventDefault();
-                      handleManualSelect(id);
-                    }}
-                    onKeyDown={(e: React.KeyboardEvent) => {
-                      if (e.key === "Enter" || e.key === " ") {
+                return (
+                  <div key={id} className="w-full">
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      ref={(el: HTMLDivElement | null) => {
+                        itemRefs.current[id] = el;
+                      }}
+                      onPointerDown={(e: React.PointerEvent) => {
                         e.preventDefault();
                         handleManualSelect(id);
-                      }
-                    }}
-                    onMouseEnter={() => {
-                      setHoveredId(id);
-                      // scroll the hovered item into view
-                      scrollItemIntoView(id);
-                    }}
-                    onMouseLeave={() => setHoveredId((h) => (h === id ? null : h))}
-                    onFocus={() => {
-                      setHoveredId(id);
-                      scrollItemIntoView(id);
-                    }}
-                    onBlur={() => setHoveredId((h) => (h === id ? null : h))}
-                    style={hoverStyle}
-                    className={[
-                      "relative flex w-full cursor-pointer select-none items-center rounded-sm px-3 py-2 text-sm outline-none",
-                      "hover:text-white",
-                    ].join(" ")}
-                    data-topbar-item
-                  >
-                    <span className="min-w-0 truncate text-black">{category.label}</span>
-                  </div>
-
-                  {/* Inline summary panel (slide down/up) */}
-                  {guideContent ? (
-                    <div
-                      aria-hidden={!isActive}
-                      className={
-                        "px-3 transition-all duration-200 ease-out overflow-hidden " +
-                        (isActive ? "max-h-80 opacity-100 py-2" : "max-h-0 opacity-0 py-0")
-                      }
+                      }}
+                      onKeyDown={(e: React.KeyboardEvent) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          handleManualSelect(id);
+                        }
+                      }}
+                      onMouseEnter={() => {
+                        setHoveredId(id);
+                        scrollItemIntoView(id);
+                      }}
+                      onMouseLeave={() => setHoveredId((h) => (h === id ? null : h))}
+                      onFocus={() => {
+                        setHoveredId(id);
+                        scrollItemIntoView(id);
+                      }}
+                      onBlur={() => setHoveredId((h) => (h === id ? null : h))}
+                      style={hoverStyle}
+                      className={[
+                        "relative flex w-full cursor-pointer select-none items-center rounded-sm px-3 py-2 text-sm outline-none",
+                        "hover:text-white",
+                      ].join(" ")}
+                      data-topbar-item
                     >
-                      <div className="rounded-md border border-border bg-white text-sm text-black p-2 shadow-sm">
-                        <div className="text-xs leading-relaxed">
-                          {guideContent}
+                      <span className="min-w-0 truncate text-black">{category.label}</span>
+                    </div>
+
+                    {guideContent ? (
+                      <div
+                        aria-hidden={!isActive}
+                        className={
+                          "px-3 transition-all duration-200 ease-out overflow-hidden " +
+                          (isActive ? "max-h-80 opacity-100 py-2" : "max-h-0 opacity-0 py-0")
+                        }
+                      >
+                        <div className="rounded-md border border-border bg-white text-sm text-black p-2 shadow-sm">
+                          <div className="text-xs leading-relaxed">
+                            {guideContent}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ) : null}
-                </div>
-              );
-            })}
-          </SelectContent>
-        </Select>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </SelectContent>
+          </Select>
+        </div>
 
         <Button variant="ghost" size="sm" className="h-8 w-8 p-0 text-white/90">
           <HelpCircle className="h-4 w-4" />
@@ -363,7 +350,7 @@ const TopBar: FC = () => {
           {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
         </Button>
 
-        <Avatar className="h-8 w-8">
+        <Avatar className="avatar h-8 w-8">
           <AvatarImage src="/api/placeholder/32/32" />
           <AvatarFallback className="bg-gradient-primary text-white text-xs">
             <User className="h-4 w-4" />
