@@ -455,6 +455,12 @@
   /* Constrain and center the Quick Start / Select popup on mobile only.
      Only adjusts the popup container width/position and prevents children from forcing a larger width.
      It does NOT change inner text, spacing or formatting. */
+
+  /* ---- ADDED: attribute-based selectors to catch portalled popups ---- */
+  [data-topbar-select],
+  .SelectContent[data-topbar-select],
+  .select-content[data-topbar-select],
+  .select-dropdown[data-topbar-select],
   .topbar .SelectContent[data-topbar-select],
   .topbar .SelectContent,
   .topbar .select-content,
@@ -471,6 +477,7 @@
   }
 
   /* Defensive: prevent internal children from forcing a wider width */
+  [data-topbar-select] *,
   .topbar .SelectContent[data-topbar-select] * {
     min-width: 0 !important;
     box-sizing: border-box !important;

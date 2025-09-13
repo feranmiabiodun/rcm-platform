@@ -215,9 +215,9 @@ const TopBar: FC = () => {
         }}
       />
 
-      {/* Updated heading: non-breaking hyphen + nowrap to avoid weird line-break */}
+      {/* Updated heading: non-breaking hyphen + explicit space between spans to ensure a gap when inline */}
       <h1 className="text-lg font-semibold leading-tight">
-        <span className="block text-sm sm:inline whitespace-nowrap">AI&#8209;NATIVE</span>
+        <span className="block text-sm sm:inline whitespace-nowrap">AI&#8209;NATIVE</span>{' '}
         <span className="block sm:inline">RCM</span>
       </h1>
 
