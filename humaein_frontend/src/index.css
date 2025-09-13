@@ -426,4 +426,60 @@
     .topbar > .select-middle { order: 2; width: 100%; margin-top: 6px; justify-content: flex-start; }
     .topbar-right { order: 3; width: 100%; justify-content: flex-end; margin-top: 6px; }
   }
+
+  /* ---------------------
+     Mobile polish for brand single-line + quickstart popup sizing
+     ONLY mobile-scoped; does not change content or formatting inside popup.
+     --------------------- */
+
+  /* Force the brand onto a single line on mobile and allow truncation only if absolutely necessary */
+  .topbar > h1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: calc(100vw - 140px); /* reserve space for right controls + gutters; tweak if needed */
+  }
+
+  .topbar > h1 span {
+    display: inline-block !important;
+    vertical-align: middle;
+  }
+
+  /* Ensure the center/select area can shrink rather than push the brand */
+  .topbar > .select-middle {
+    flex: 1 1 auto;
+    min-width: 0; /* already present above, repeated defensively */
+  }
+
+  /* Constrain and center the Quick Start / Select popup on mobile only.
+     Only adjusts the popup container width/position and prevents children from forcing a larger width.
+     It does NOT change inner text, spacing or formatting. */
+  .topbar .SelectContent[data-topbar-select],
+  .topbar .SelectContent,
+  .topbar .select-content,
+  .topbar .select-dropdown {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    right: auto !important;
+    width: auto !important;
+    max-width: calc(100vw - 32px) !important; /* 16px gutters on each side */
+    margin: 0 16px !important;
+    box-sizing: border-box !important;
+    overflow: auto !important;   /* allow vertical scroll if content is tall */
+    z-index: 9999 !important;
+  }
+
+  /* Defensive: prevent internal children from forcing a wider width */
+  .topbar .SelectContent[data-topbar-select] * {
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  /* Very small devices: tiny optional font-size tweak if absolutely necessary */
+  @media (max-width: 360px) {
+    .topbar > h1 { font-size: 0.95rem; }
+  }
 }
