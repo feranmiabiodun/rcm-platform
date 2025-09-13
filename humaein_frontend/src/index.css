@@ -112,6 +112,19 @@
 }
 
 @layer base {
+  /* Reset default margins/padding and ensure consistent box-sizing */
+  html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Ensure topbar respects safe-area insets on mobile devices (iOS notch) */
+  .topbar {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
   * {
     @apply border-border;
   }
