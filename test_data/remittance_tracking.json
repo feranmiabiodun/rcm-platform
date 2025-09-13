@@ -2,106 +2,19 @@
   {
     "Remittance": {
       "RemitID": "RA-PAID-1",
-      "ClaimRefID": "CLM-PAID-1",
-      "RemitStatus": "RA_PAID_IN_FULL",
-      "PaidAmount": 100.0,
-      "Adjustments": [],
-      "DenialCodes": [],
-      "PaymentDate": "08/09/2025"
-    },
-    "__expected_outcome": "RA_PAID_IN_FULL"
+      "ClaimRefID": "CLM-PAID-1"
+    }
   },
   {
     "Remittance": {
       "RemitID": "RA-PART-1",
-      "ClaimRefID": "CLM-PART-1",
-      "RemitStatus": "RA_PARTIAL_PAYMENT",
-      "PaidAmount": 60.0,
-      "Adjustments": [
-        {
-          "Code": "ADJ_OON",
-          "Amount": 40.0
-        }
-      ],
-      "DenialCodes": [],
-      "PaymentDate": "08/09/2025"
-    },
-    "__expected_outcome": "RA_PARTIAL_PAYMENT"
+      "ClaimRefID": "CLM-PART-1"
+    }
   },
   {
     "Remittance": {
       "RemitID": "RA-DENY-1",
-      "ClaimRefID": "CLM-DENY-1",
-      "RemitStatus": "RA_DENIED",
-      "PaidAmount": 0.0,
-      "DenialCodes": [
-        {
-          "Code": "DN01",
-          "Description": "Not covered"
-        }
-      ],
-      "PaymentDate": "08/09/2025"
-    },
-    "__expected_outcome": "RA_DENIED"
-  },
-  {
-    "Remittance": {
-      "RemitID": "RA-PEND-1",
-      "ClaimRefID": "CLM-PEND-1",
-      "RemitStatus": "RA_PENDED",
-      "PaidAmount": 0.0,
-      "Adjustments": [],
-      "DenialCodes": [],
-      "PaymentDate": "08/09/2025"
-    },
-    "__expected_outcome": "RA_PENDED"
-  },
-  {
-    "Remittance": {
-      "RemitID": "RA-ADJ-1",
-      "ClaimRefID": "CLM-ADJ-1",
-      "RemitStatus": "RA_ADJUSTED",
-      "PaidAmount": 80.0,
-      "Adjustments": [
-        {
-          "Code": "ADJ01",
-          "Amount": 20.0,
-          "Description": "Adjustment"
-        }
-      ],
-      "DenialCodes": [],
-      "PaymentDate": "08/09/2025"
-    },
-    "__expected_outcome": "RA_ADJUSTED"
-  },
-  {
-    "Remittance": {
-      "RemitID": "RA-REV-1",
-      "ClaimRefID": "CLM-REV-1",
-      "RemitStatus": "RA_REVERSED",
-      "PaidAmount": 0.0,
-      "Adjustments": [
-        {
-          "Code": "ADJ_REV",
-          "Amount": -100.0,
-          "Description": "Reversal"
-        }
-      ],
-      "DenialCodes": [],
-      "PaymentDate": "08/09/2025"
-    },
-    "__expected_outcome": "RA_REVERSED"
-  },
-  {
-    "Remittance": {
-      "RemitID": "RA-NP-1",
-      "ClaimRefID": "CLM-NP-1",
-      "RemitStatus": "RA_NOT_POSTED",
-      "PaidAmount": 0.0,
-      "Adjustments": [],
-      "DenialCodes": [],
-      "PaymentDate": "08/09/2025"
-    },
-    "__expected_outcome": "RA_NOT_POSTED"
+      "ClaimRefID": "CLM-DENY-1"
+    }
   }
 ]

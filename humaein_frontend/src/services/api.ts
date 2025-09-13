@@ -189,12 +189,13 @@ export async function claimsSubmit<T = unknown>(payload: Record<string, unknown>
   });
 }
 
-export async function remittance<T = unknown>(query: Record<string, unknown> = {}, opts: RequestOpts = {}): Promise<ApiResult<T>> {
+export async function remittance<T = unknown>(payload: unknown = [], opts: RequestOpts = {}): Promise<ApiResult<T>> {
   return requestWithRetry<T>({
-    method: "get",
+    method: "post",
     url: ENDPOINTS.REMITTANCE,
-    params: query,
-    retries: opts.retries ?? 2,
+    data: payload,
+    headers: { "Content-Type": "application/json", ...(opts.headers ?? {}) },
+    retries: opts.retries ?? 0,
     signal: opts.signal,
   });
 }
@@ -221,12 +222,13 @@ export async function resubmit<T = unknown>(payload: Record<string, unknown>, op
   });
 }
 
-export async function reconciliation<T = unknown>(query: Record<string, unknown> = {}, opts: RequestOpts = {}): Promise<ApiResult<T>> {
+export async function reconciliation<T = unknown>(payload: unknown = {}, opts: RequestOpts = {}): Promise<ApiResult<T>> {
   return requestWithRetry<T>({
-    method: "get",
+    method: "post",
     url: ENDPOINTS.RECONCILIATION,
-    params: query,
-    retries: opts.retries ?? 2,
+    data: payload,
+    headers: { "Content-Type": "application/json", ...(opts.headers ?? {}) },
+    retries: opts.retries ?? 0,
     signal: opts.signal,
   });
 }

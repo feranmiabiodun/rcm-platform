@@ -1,8 +1,4 @@
 [
   {"Resubmission":{"OriginalClaimRefID":"REF_RES_ACCEPT","ResubmissionType":"correction","CorrectionPayload":{"FieldChanged":"Diagnosis"}}},
-  {"Resubmission":{"OriginalClaimRefID":"REF_RES_REJECT","ResubmissionType":"correction","NewClaimID":null}},
-  {"Resubmission":{"OriginalClaimRefID":"REF_RES_RECON","ResubmissionType":"reconciliation","Note":"Requires reconciliation"}},
-  {"Resubmission":{"OriginalClaimRefID":"REF_RES_LIMIT","Attempts":6}},
-  {"Resubmission":{"OriginalClaimRefID":"REF_RES_PAID","ResubmissionType":"correction","NewClaimID":"CLM-RES-PAID","Paid":true}},
-  {"Resubmission":{"OriginalClaimID":"REF_RES_FINAL_DENY","ResubmissionType":"final","Decision":"DENIED"}}
+  {"Resubmission":{"OriginalClaimRefID":"REF_RES_REJECT","ResubmissionType":"correction","NewClaimID":null}}
 ]

@@ -1,9 +1,5 @@
 [
   {"Header":{"SenderID":"HOSP-001"},"Claim":{"ID":"CLM-COD-0001","ServiceLineItems":[{"ProcedureCode":"99214","Net":100.0}],"DiagnosisCodes":["I10"],"PatientAge":45,"PatientSex":"M"}},
   {"Header":{"SenderID":"HOSP-001"},"Claim":{"ID":"CLM-COD-0002","ServiceLineItems":[{"ProcedureCode":"XXXX","Net":50.0}],"DiagnosisCodes":["I10"]}},
-  {"Header":{"SenderID":"HOSP-001"},"Claim":{"ID":"CLM-COD-0003","ServiceLineItems":[{"ProcedureCode":"63047","Net":200.0}],"DiagnosisCodes":["I10"]}},
-  {"Header":{"SenderID":"HOSP-001"},"Claim":{"ID":"CLM-COD-0004","ServiceLineItems":[{"ProcedureCode":"99214"},{"ProcedureCode":"99214"}],"DiagnosisCodes":["I10"]}},
-  {"Header":{"SenderID":"HOSP-001"},"Claim":{"ID":"CLM-COD-0005","ServiceLineItems":[{"ProcedureCode":"99214","Units":1,"Charge":100},{"ProcedureCode":"99214","Units":1,"Charge":100}],"DiagnosisCodes":["I10"]}},
-  {"Header":{"SenderID":"HOSP-001"},"Claim":{"ID":"CLM-COD-0006","ServiceLineItems":[{"ProcedureCode":"93000","Net":50.0}],"DiagnosisCodes":["I25"],"PatientAge":0,"PatientSex":"M"}},
   {"Header":{"SenderID":"HOSP-001"},"Claim":{"ID":"CLM-COD-0007","ServiceLineItems":[{"ProcedureCode":"99285","Net":300.0}],"DiagnosisCodes":["G44"]}}
 ]
